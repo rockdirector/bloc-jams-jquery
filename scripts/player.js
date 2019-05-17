@@ -1,5 +1,5 @@
 class Player {
-  constructor () {
+  constructor() {
     this.currentlyPlaying = album.songs[0];
     this.playState = 'stopped';
     this.volume = 80;
@@ -20,7 +20,6 @@ class Player {
       this.soundObject.stop();
       // Clear classes on the song that's currently playing
       this.currentlyPlaying.element.removeClass('playing paused');
-
       // Update our currentlyPlaying and playState properties
       this.currentlyPlaying = song;
       this.playState = 'stopped';
@@ -31,12 +30,19 @@ class Player {
       this.soundObject.play();
       this.playState = 'playing';
       this.currentlyPlaying.element.removeClass('paused').addClass('playing');
-    } else {
+
+    }
+    else {
       this.soundObject.pause();
       this.playState = 'paused';
       this.currentlyPlaying.element.removeClass('playing').addClass('paused');
     }
   }
+
+  prettyTime (timeInSeconds) {
+        var prettyDuration = buzz.toTimer(timeInSeconds);
+        return prettyDuration;
+    }
 
   skipTo (percent) {
     if (this.playState !== 'playing') { return }
@@ -47,6 +53,7 @@ class Player {
     this.volume = percent;
     this.soundObject.setVolume(percent);
   }
+
 }
 
 const player = new Player();

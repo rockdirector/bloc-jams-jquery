@@ -10,12 +10,14 @@
           </button>
         </td>
         <td>${song.title}</td>
-        <td>${song.duration}</td>
+        <td>${player.prettyTime(song.duration)}</td>
       </tr>
       `);
 
       song.element.on('click', event => {
-        player.playPause(song);
+//        player.playPause(song);
+          $('#time-control .total-time').text( player.prettyTime(song.duration) );
+          helper.playPauseAndUpdate(song);
         $('button#play-pause').attr('playState', player.playState);
       });
 
