@@ -1,8 +1,7 @@
 class Helper {
     playPauseAndUpdate(song) {
       player.playPause(song);
-      const trkDuration = player.prettyTime(player.getDuration());
-      $('#time-control .total-time').text( trkDuration );
+      const trkDuration = player.prettyTime(player.currentlyPlaying.duration);
     }
 };
 
